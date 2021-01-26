@@ -1,10 +1,10 @@
-#' @templateVar MODEL_FUNCTION pst_gainloss_Q
+#' @templateVar MODEL_FUNCTION pst_gainloss_Q_eo
 #' @templateVar CONTRIBUTOR \href{https://ccs-lab.github.io/team/jaeyeong-yang/}{Jaeyeong Yang} <\email{jaeyeong.yang1125@@gmail.com}>
 #' @templateVar TASK_NAME Probabilistic Selection Task
 #' @templateVar TASK_CODE pst
 #' @templateVar TASK_CITE
 #' @templateVar MODEL_NAME Gain-Loss Q Learning Model
-#' @templateVar MODEL_CODE gainloss_Q
+#' @templateVar MODEL_CODE gainloss_Q_eo
 #' @templateVar MODEL_CITE (Frank et al., 2007)
 #' @templateVar MODEL_TYPE Hierarchical
 #' @templateVar DATA_COLUMNS "subjID", "type", "choice", "reward"
@@ -28,9 +28,9 @@
 #' Frank, M. J., Moustafa, A. A., Haughey, H. M., Curran, T., & Hutchison, K. E. (2007). Genetic triple dissociation reveals multiple roles for dopamine in reinforcement learning. Proceedings of the National Academy of Sciences, 104(41), 16311-16316.
 #'
 
-pst_gainloss_Q <- hBayesDM_model(
+pst_gainloss_Q_eo <- hBayesDM_model(
   task_name       = "pst",
-  model_name      = "gainloss_Q",
+  model_name      = "gainloss_Q_eo",
   model_type      = "",
   data_columns    = c("subjID", "type", "choice", "reward"),
   parameters      = list(

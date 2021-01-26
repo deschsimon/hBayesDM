@@ -1,10 +1,10 @@
-#' @templateVar MODEL_FUNCTION bandit2arm_delta
+#' @templateVar MODEL_FUNCTION bandit2arm_delta_eo
 #' @templateVar CONTRIBUTOR
 #' @templateVar TASK_NAME 2-Armed Bandit Task
 #' @templateVar TASK_CODE bandit2arm
 #' @templateVar TASK_CITE (Erev et al., 2010; Hertwig et al., 2004)
-#' @templateVar MODEL_NAME Rescorla-Wagner (Delta) Model
-#' @templateVar MODEL_CODE delta
+#' @templateVar MODEL_NAME Rescorla-Wagner (Delta) Model (extended)
+#' @templateVar MODEL_CODE delta_eo
 #' @templateVar MODEL_CITE
 #' @templateVar MODEL_TYPE Hierarchical
 #' @templateVar DATA_COLUMNS "subjID", "choice", "outcome"
@@ -29,7 +29,7 @@
 #' Hertwig, R., Barron, G., Weber, E. U., & Erev, I. (2004). Decisions From Experience and the Effect of Rare Events in Risky Choice. Psychological Science, 15(8), 534-539. http://doi.org/10.1111/j.0956-7976.2004.00715.x
 #'
 
-bandit2arm_delta <- hBayesDM_model(
+bandit2arm_delta_eo <- hBayesDM_model(
   task_name       = "bandit2arm",
   model_name      = "delta_eo",
   model_type      = "",
