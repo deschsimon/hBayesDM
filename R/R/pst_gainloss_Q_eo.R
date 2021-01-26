@@ -39,5 +39,5 @@ pst_gainloss_Q_eo <- hBayesDM_model(
     "beta" = c(0, 1, 10)
   ),
   regressors      = NULL,
-  postpreds       = c("y_pred", "PE_pred", "EV_pred"),
+  postpreds       = c("y_pred", "PE_pred", "ev_pred"),
   preprocess_func = pst_preprocess_func)
