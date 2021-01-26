@@ -14,7 +14,6 @@
 #'
 #' \describe{
 #'  \item{\strong{Bandit}}{2-Armed Bandit (Rescorla-Wagner (delta)) --- \link{bandit2arm_delta} \cr
-#'                         2-Armed Bandit extended output (Rescorla-Wagner (delta)) --- \link{bandit2arm_delta_eo} \cr
 #'                         4-Armed Bandit with fictive updating + reward/punishment sensitvity (Rescorla-Wagner (delta)) --- \link{bandit4arm_4par} \cr
 #'                         4-Armed Bandit with fictive updating + reward/punishment sensitvity + lapse (Rescorla-Wagner (delta)) --- \link{bandit4arm_lapse}}
 #'  \item{\strong{Bandit2}}{Kalman filter --- \link{bandit4arm2_kalman_filter}}
@@ -48,8 +47,7 @@
 #'                                                  Reward-Punishment and multiple blocks per subject --- \link{prl_rp_multipleB} \cr
 #'                                                  Fictitious Update with separate learning for Reward-Punishment --- \link{prl_fictitious_rp} \cr
 #'                                                  Fictitious Update with separate learning for Reward-Punishment w/o alpha (indecision point) --- \link{prl_fictitious_rp_woa}}
-#'  \item{\strong{Probabilistic Selection Task}}{Q-learning with two learning rates --- \link{pst_gainloss_Q} \cr
-#'                                               Q-learning with two learning rates & extended output --- \link{pst_gainloss_Q_eo}}
+#'  \item{\strong{Probabilistic Selection Task}}{Q-learning with two learning rates --- \link{pst_gainloss_Q}}
 #'  \item{\strong{Risk Aversion}}{Prospect Theory (PT) --- \link{ra_prospect} \cr
 #'                                PT without a loss aversion parameter --- \link{ra_noLA} \cr
 #'                                PT without a risk aversion parameter --- \link{ra_noRA}}
