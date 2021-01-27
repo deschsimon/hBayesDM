@@ -13,6 +13,8 @@
 
 bandit2arm_delta_pred <- function(fit) {
     raw.dat <- fit$rawdata
+    st <- data.table(raw.dat)%>%.[, (n=.N), by='subjID']
+    subj.trials <- st[[2]]
     n.iter <- dim(fit$parVals$y_pred)[1]
     fit.pred <- data.table::rbindlist(lapply(1:n.iter, function(i){
         iter.dat <- raw.dat

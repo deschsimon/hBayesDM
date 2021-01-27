@@ -130,7 +130,7 @@ generated quantities {
         log_lik[i] += bernoulli_logit_lpmf(choice[i, t] | beta[i] * delta);
         
         // generate posterior prediction for current trial
-        y_pred[i, t] = bernoulli_rng(beta[i] * delta);
+        y_pred[i, t] = bernoulli_logit_rng(beta[i] * delta);
         
         // prediction error
         pe = reward[i, t] - ev[co];
