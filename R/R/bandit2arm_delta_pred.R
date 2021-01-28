@@ -12,22 +12,28 @@
 #' @export
 
 bandit2arm_delta_pred <- function(fit) {
-    raw.dat <- fit$rawdata
-    st <- data.table(raw.dat)%>%.[, (n=.N), by='subjID']
-    subj.trials <- st[[2]]
-    n.iter <- dim(fit$parVals$y_pred)[1]
+    r.d <- data.table(fit$rawdata)
+    dims <- dim(fit$parVals$y_pred)
+    n.iter <- dims[1]
+    tsubj <- dims[3]
+    r.d[, trial := 1:.N, by='subjID']
+    f.d <- expand.grid(subjID=unique(r.d$subjID), trial=1:tsubj)
+    i.d <- merge(r.d, f.d, all.y = T)
     fit.pred <- data.table::rbindlist(lapply(1:n.iter, function(i){
-        iter.dat <- raw.dat
-        y_preds <- na.omit(as.numeric(t(fit$parVals$y_pred[i, , ])))
-        y_preds_inlvalid <- attr(y_preds, 'na.action')
-        iter.dat$y_pred <- y_preds
-        iter.dat$PE_pred <- as.numeric(t(fit$parVals$PE_pred[i, , ]))[-y_preds_inlvalid]
-        iter.dat$ev1_pred <- na.omit(as.numeric(t(fit$parVals$ev_pred[i, , , 1])[-y_preds_inlvalid]))
-        iter.dat$ev2_pred <- na.omit(as.numeric(t(fit$parVals$ev_pred[i, , , 2])[-y_preds_inlvalid]))
-        iter.dat$A <- rep(fit$parVals$A[i, ], subj.trials)
-        iter.dat$tau <- rep(fit$parVals$tau[i, ], subj.trials)
-        iter.dat$iter <- i
+        iter.dat <- data.table(
+            cbind(i.d,
+                  matrix(t(fit$parVals$y_pred[i, , ]), ncol=1, byrow = T),
+                  matrix(t(fit$parVals$PE_pred[i, , ]), ncol=1, byrow = T),
+                  matrix(t(fit$parVals$ev_pred[i, , , 1]), ncol=1, byrow = T),
+                  matrix(t(fit$parVals$ev_pred[i, , , 1]), ncol=1, byrow = T),
+                  rep(fit$parVals$A[i, ], each=tsubj),
+                  rep(fit$parVals$tau[i, ], each=tsubj),
+                  i
+            )
+        )
+        names(iter.dat) <- c(names(i.d), 'y_pred', 'PE_pred', 'ev1_pred', 'ev2_pred', 'A', 'tau', 'iter')
         iter.dat
     }))
-    return(fit.pred)
+
+    return(na.omit(fit.pred, cols='choice'))
 }
