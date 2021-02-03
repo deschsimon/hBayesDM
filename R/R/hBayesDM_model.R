@@ -127,7 +127,7 @@ hBayesDM_model <- function(task_name,
            adapt_delta    = 0.95,
            stepsize       = 1,
            max_treedepth  = 10,
-           seed = sample.int(.Machine$integer.max, 1),
+           seed           = sample.int(.Machine$integer.max, 1),
            ...) {
 
     ############### Stop checks ###############

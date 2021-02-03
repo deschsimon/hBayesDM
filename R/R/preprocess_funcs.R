@@ -43,8 +43,18 @@ alt_preprocess_func <- function(raw_data, general_info) {
   return(data_list)
 }
 
-bandit2arm_preprocess_func <- function(raw_data, general_info) {
+bandit2arm_preprocess_func <- function(raw_data, general_info, priors=
+                                         list(mu_pr_m = 0, mu_pr_sd = 1, sigma_m  = 0, sigma_sd  = 0.2,
+                                              A_pr_m  = 0, A_pr_sd  = 1,
+                                              tau_pr_m = 0, tau_pr_sd = 1,
+                                              Arew_pr_m  = 0, Arew_pr_sd  = 1, Apun_pr_m  = 0, Apun_pr_sd  = 1,
+                                              R_pr_m = 0, R_pr_sd = 1, P_pr_m = 0, P_pr_sd = 1,
+                                              d_pr_m = 0, d_pr_sd = 1
+                                              )) {
   # Currently class(raw_data) == "data.table"
+  e <- environment() # current environment
+  p <- parent.env(e)
+  message('bandit2arm_preprocess_func:: model_name: ', p$model_name, ', model_type: ', p$model_type)
 
   # Use general_info of raw_data
   subjs   <- general_info$subjs
@@ -74,7 +84,16 @@ bandit2arm_preprocess_func <- function(raw_data, general_info) {
     choice  = choice,
     outcome = outcome
   )
-
+  if(!is.null(priors)) {
+    allowed_priors <- c('mu_pr_m', 'mu_pr_sd', 'sigma_m', 'sigma_sd',
+                        'A_pr_m', 'A_pr_sd',
+                        'tau_pr_m', 'tau_pr_sd',
+                        'Arew_pr_m', 'Arew_pr_sd', 'Apun_pr_m', 'Apun_pr_sd',
+                        'R_pr_m', 'R_pr_sd', 'P_pr_m', 'P_pr_sd',
+                        'd_pr_m', 'd_pr_sd')
+    data_list <- c(data_list, priors[names(priors)%in%allowed_priors])
+  }
+  print(data_list)
   # Returned data_list will directly be passed to Stan
   return(data_list)
 }

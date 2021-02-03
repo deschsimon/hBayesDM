@@ -1,11 +1,11 @@
 #' Get combined table of posterior predictions from bandit2arm_delta
 #'
 #' @description
-#' After running \code{bandit2arm_delta} with \code{inc_postpred = T}
+#' After running \code{bandit2arm_delta_eo} with \code{inc_postpred = T}
 #' the fitted "hBayesDM" object contains \code{y_pred}, \code{PE_pred}, and \code{ev_pred}.
 #' This functions restructures this data to a single 2D \code{data.table}.
 #'
-#' @param fit A "hBayesDM" object fitted with \code{bandit2arm_delta} function.
+#' @param fit A "hBayesDM" object fitted with \code{bandit2arm_delta_eo} function.
 #'
 #' @return A \code{data.table} object.
 #'

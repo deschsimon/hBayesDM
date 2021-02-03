@@ -2,14 +2,14 @@
 #' @templateVar CONTRIBUTOR \href{https://ccs-lab.github.io/team/jaeyeong-yang/}{Jaeyeong Yang} <\email{jaeyeong.yang1125@@gmail.com}>
 #' @templateVar TASK_NAME Probabilistic Selection Task
 #' @templateVar TASK_CODE pst
-#' @templateVar TASK_CITE
+#' @templateVar TASK_CITE 
 #' @templateVar MODEL_NAME Gain-Loss Q Learning Model
 #' @templateVar MODEL_CODE gainloss_Q_eo
 #' @templateVar MODEL_CITE (Frank et al., 2007)
 #' @templateVar MODEL_TYPE Hierarchical
 #' @templateVar DATA_COLUMNS "subjID", "type", "choice", "reward"
 #' @templateVar PARAMETERS \code{alpha_pos} (learning rate for positive feedbacks), \code{alpha_neg} (learning rate for negative feedbacks), \code{beta} (inverse temperature)
-#' @templateVar REGRESSORS
+#' @templateVar REGRESSORS 
 #' @templateVar POSTPREDS "y_pred", "PE_pred", "EV_pred"
 #' @templateVar LENGTH_DATA_COLUMNS 4
 #' @templateVar DETAILS_DATA_1 \item{subjID}{A unique identifier for each subject in the data-set.}
@@ -17,7 +17,7 @@
 #' @templateVar DETAILS_DATA_3 \item{choice}{Whether the subject chose the left option (option1) out of the given two options (i.e. if option1 was chosen, 1; if option2 was chosen, 0).}
 #' @templateVar DETAILS_DATA_4 \item{reward}{Amount of reward earned as a result of the trial.}
 #' @templateVar LENGTH_ADDITIONAL_ARGS 0
-#'
+#' 
 #' @template model-documentation
 #'
 #' @export

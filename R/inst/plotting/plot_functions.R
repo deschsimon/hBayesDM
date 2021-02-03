@@ -120,6 +120,14 @@ plot_bandit2arm_delta <- function(obj, fontSize = 10, ncols = 2, binSize = 30) {
   return(h_all)
 }
 
+plot_bandit2arm_delta_eo <- function(obj, fontSize = 10, ncols = 2, binSize = 30) {
+  pars = obj$parVals
+  h1 = plotDist(sample = pars$mu_A, fontSize = fontSize, binSize = binSize, xLim = c(0, 1), xLab = "A (Learning Rate)")
+  h2 = plotDist(sample = pars$mu_tau, fontSize = fontSize, binSize = binSize, xLab = expression(paste(tau, " (Inverse Temp.)")))
+  h_all = multiplot(h1, h2, cols = ncols)
+  return(h_all)
+}
+
 plot_bandit4arm_4par <- function(obj, fontSize = 10, ncols = 2, binSize = 30) {
   pars = obj$parVals
   h1 = plotDist(sample = pars$mu_Arew, fontSize = fontSize, binSize = binSize, xLim = c(0, 1), xLab = expression(paste(A[rew], " (Rew. Learning Rate)")))
@@ -413,6 +421,16 @@ plot_pst_gainloss_Q <- function(obj, fontSize = 10, ncols = 3, binSize = 30) {
   h_all = multiplot(h1, h2, h3, cols = ncols)
   return(h_all)
 }
+
+plot_pst_gainloss_Q_eo <- function(obj, fontSize = 10, ncols = 3, binSize = 30) {
+  pars = obj$parVals
+  h1 = plotDist(sample = pars$mu_alpha_pos, fontSize = fontSize, binSize = binSize, xLim = c(0,2), xLab = expression(paste(alpha[pos], " (+Learning Rate)")))
+  h2 = plotDist(sample = pars$mu_alpha_neg, fontSize = fontSize, binSize = binSize, xLim = c(0,2), xLab = expression(paste(alpha[neg], " (-Learning Rate)")))
+  h3 = plotDist(sample = pars$mu_beta, fontSize = fontSize, binSize = binSize, xLab = expression(paste(beta, " (Inverse Temp.)")))
+  h_all = multiplot(h1, h2, h3, cols = ncols)
+  return(h_all)
+}
+
 
 plot_bandit4arm2_kalman_filter <- function(obj, fontSize = 10, ncols = 6, binSize = 30) {
   pars = obj$parVals
